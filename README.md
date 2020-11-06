@@ -1,4 +1,4 @@
-# Oddam w dobre ręce v1.0.0
+# Oddaj rzeczy v1.0.0
 
 Strona internetowa napisana w ReactJs dzięki której można przekazać rzeczy fundacjom wspierającym osoby biedne.
 
