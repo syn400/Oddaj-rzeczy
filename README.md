@@ -5,7 +5,7 @@ Strona internetowa napisana w ReactJs dzięki której można przekazać rzeczy f
 ## Demo strony: https://oddajrzeczy.netlify.app
 
 ## Zdjęcia strony:
-![main-page1](public/website.jpg)
+![website](public/website.jpg)
 
 
 
