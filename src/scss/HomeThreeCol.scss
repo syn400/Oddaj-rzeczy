@@ -1,0 +1,32 @@
+@import './settings/colors';
+
+section.three--col {
+    height: 24rem;
+    background-image: url('../assets/3\ Columns\ Background.png');
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    & > div {
+        width: 21rem;
+        text-align: center;
+        font-weight: 300;
+
+        h2 {
+            color: $color-text-brown;
+            font-size: 5.6rem;
+        }
+        
+        h3 {
+            font-size: 1.125rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            margin: 1.75rem 0;
+        }
+
+        p {
+            line-height: 26px;
+            letter-spacing: -0.32px;
+        }
+    }
+}

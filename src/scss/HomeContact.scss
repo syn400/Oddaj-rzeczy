@@ -1,0 +1,128 @@
+@import './settings/colors';
+@import './settings/fonts';
+
+#contact--section {
+    height: 67rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+
+    &::before {
+        content: "";
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-image: url('../assets/Background-Contact-Form.jpg');
+        background-size: 105%;
+        background-repeat: no-repeat;
+        opacity: 0.2;
+    }
+
+
+    .form--container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+
+        & > img {
+            margin: 2.5rem 0;
+        }
+
+        & > h2 {
+            font-size: 2.375rem;
+        }
+
+        & > form {
+
+            .err {
+                font-size: 0.8rem;
+                letter-spacing: -0.30px;
+                position: absolute;
+                font-weight: 600;
+                color: #e72e15;
+                margin-top: 0.5rem;
+            }
+
+            .contact--form {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                width: 33rem;
+
+                h2 {
+                    margin-top: 2rem;
+                    font-weight: 600;
+                    padding: 1rem 0;
+                }
+
+                input[name='name'], input[name='email'] {
+                    width: 16rem;
+                }
+
+                textarea[name='message'] {
+                    width: 33rem;
+                    resize: none;
+                    height: 6rem;
+                    font-family: $font-base;
+                    line-height: 24px;
+                }
+
+                input, textarea {
+                    border: none;
+                    border-bottom: 1px solid $color-text;
+                    padding: 0.3rem 0;
+                    font-size: 1.125rem;
+                    background: none;
+
+                    &::placeholder {
+                        color: #3C3C3C26;
+                    }
+                }
+
+                .red--border {
+                    border-bottom: 1px solid #e72e15;
+                }
+            }
+
+            button {
+                float: right;
+                background: none;
+                font-size: 1.125rem;
+                color: $color-text;
+                border: 0.75px solid $color-text;
+                width: 9.3rem;
+                height: 3.1rem;
+                margin-top: 2.5rem;
+            }
+        }
+    }
+
+    .footer--container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+        font-size: 1.125rem;
+
+        width: calc(100% - 20rem);
+
+        & > div {
+            position: absolute;
+            right: 0;
+
+            a {
+                margin-left: 1.5rem;
+            }
+        }
+    }
+
+    .form--container, .footer--container {
+        margin-right: 10rem;
+    }
+}

@@ -1,0 +1,47 @@
+@import './settings/colors';
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 60rem;
+    background-image: url('../assets/Home-Hero-Image.jpg');
+    background-repeat: no-repeat;
+    background-position: -30rem;
+
+    & > div {
+        display: flex;
+        flex-direction: column;
+        margin-right: 17rem;
+        margin-top: 21rem;
+
+        img {
+            margin: 1.5rem 0 4rem 0;
+        }
+
+        & > div {
+            display: flex;
+            justify-content: space-between;
+
+            p {
+                text-transform: uppercase;
+                font-weight: 300;
+                color: $color-text;
+                font-size: 2.25rem;
+                border: 1px solid $color-text;
+                width: 19rem;
+                height: 7.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                line-height: 45px;
+            }
+        }
+        h2 {
+            font-size: 2.375rem;
+            text-align: center;
+            line-height: 55px;
+        }
+    }
+}

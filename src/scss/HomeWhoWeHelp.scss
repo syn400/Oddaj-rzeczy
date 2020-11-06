@@ -1,0 +1,76 @@
+@import './settings/colors';
+
+#organizations--section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70rem;
+
+    .organizations--container {
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+
+        & > h2 {
+            font-size: 2.375rem;
+        }
+
+        .btn--container {
+            display: flex;
+            width: 60rem;
+            justify-content: space-evenly;
+            button {
+                font-size: 1.5rem;
+                color: $color-text;
+                width: 13rem;
+                height: 5rem;
+                background: none;
+                border: none;
+
+                &.active {
+                    border: 1px solid;
+                }
+            }
+        }
+
+        & > p {
+            max-width: 40rem;
+            font-size: 1.375rem;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        & > .result--list {
+            width: 84rem;
+
+
+
+            li {
+                height: 7.5rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-weight: 300;
+                
+                h2 {
+                    font-size: 1.625rem;
+                }
+
+                p {
+                    font-size: 1.375rem;
+                }
+
+                & > p {
+                    font-size: 1.125rem;
+                }
+
+                &:nth-child(2n+0) {
+                    border-top: 1px solid;
+                    border-bottom: 1px solid;
+                }
+            }
+        }
+    }
+}
