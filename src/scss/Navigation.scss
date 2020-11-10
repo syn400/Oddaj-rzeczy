@@ -1,7 +1,7 @@
 @import './settings/colors';
 
 nav {
-    position: fixed;
+    position: absolute;
     height: 6rem;
     width: 43.5rem;
     margin-top: 2.3rem;
@@ -9,18 +9,6 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    &::before {
-        content: "";
-        z-index: -1;
-        position: absolute;
-        background-color: #ffffffe3;
-        width: 200%;
-        height: 120%;
-        top: -10%;
-        left: -2rem;
-        border-radius: 2rem 0 0 2rem;
-    }
 
     & > div, & > ul{
         display: flex;

@@ -1,9 +1,31 @@
 import '../scss/HomeWhoWeHelp.scss';
 import decoration from '../assets/Decoration.svg';
 import {useState} from 'react';
+// import firebase from 'firebase/app';
+import 'firebase/database';
+import '../fire';
+// import { get } from 'react-scroll/modules/mixins/scroller';
+
+// const db = firebase.firestore();
 
 export const HomeWhoWeHelp = () => {
     const [content, setContent] = useState('Foundations');
+    // const [collection, setCollection] = useState([]);
+    // const [foun, setFoun] = useState('')
+    // const [org, setOrg] = useState('')
+    // const [local, setLocal] = useState('')
+
+    // const getCollection = (val) => {
+    //     db.collection(val).get().then(documentSnapshot => {
+    //         let array = [];
+    //         documentSnapshot.forEach((doc) => {
+    //                 array.push(doc.data())
+    //             })
+    //         setCollection(array)
+    //         }
+    //     )
+    //     console.log(collection)
+    // }
 
     const showParagraph = () => {
         if(content === 'Organizations') {
@@ -15,6 +37,7 @@ export const HomeWhoWeHelp = () => {
         }
     }
 
+
     return (
         <section id='organizations--section'>
             <div className='organizations--container'>
@@ -23,16 +46,38 @@ export const HomeWhoWeHelp = () => {
                 <div className='btn--container'>
                     <button 
                         className={content === 'Foundations' ? 'active' : null} 
-                        onClick={()=>setContent('Foundations')}>Fundacjom</button>
+                        onClick={()=> {
+                            setContent('Foundations');
+                            // getCollection('Foundations');
+                        }}>Fundacjom</button>
                     <button
                         className={content === 'Organizations' ? 'active' : null} 
-                        onClick={()=>setContent('Organizations')}>Organizacjom<br/>pozarządowym</button>
+                        onClick={()=> {
+                            setContent('Organizations');
+                            // getCollection('Organizations');
+                        }}>Organizacjom<br/>pozarządowym</button>
                     <button
                         className={content === 'Local' ? 'active' : null} 
-                        onClick={()=>setContent('Local')}>Lokalnym<br/>zbiórkom</button>
+                        onClick={()=> {
+                            setContent('Local');
+                            // getCollection('Local');
+                        }}>Lokalnym<br/>zbiórkom</button>
                 </div>
+
                 {showParagraph()}
+
                 <ul className='result--list'>
+                    {/* {collection.map((e) => {
+                        return (
+                            <li>
+                                <div>
+                                    <h2>Fundacja "{e.name}"</h2>
+                                    <p>{e.mission}</p>
+                                </div>
+                                <p>{e.category}</p>
+                            </li>
+                        )
+                    })} */}
                     <li>
                         <div>
                             <h2>Fundacja "Dbam o zdrowie"</h2>

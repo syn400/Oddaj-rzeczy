@@ -1,0 +1,26 @@
+@import '../scss/settings/colors';
+
+section.not--found {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+        font-size: 15vw;
+    }
+
+    p {
+        font-size: 3vw;
+        margin: 3rem 0 2rem 0;
+    }
+
+    span {
+        font-size: 2vw;
+        color: $color-text;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
