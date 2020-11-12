@@ -20,23 +20,23 @@ export const Navigation = () => {
 
             <ul>
                 <ScrollTo style={{textDecoration: 'none'}} activeClassName='active'  to="header--section" spy={true} smooth={true} duration={500}>
-                    <li>Start</li>
+                    <Link to='/' style={{textDecoration: 'none'}}><li>Start</li></Link>
                 </ScrollTo>
 
-                <ScrollTo style={{textDecoration: 'none'}} activeClassName='active' to="steps--section" spy={true} smooth={true} duration={500}>
-                    <li>O co chodzi?</li>
+                <ScrollTo style={{textDecoration: 'none'}} activeClassName='active' offset={-200} to="steps--section" spy={true} smooth={true} duration={500}>
+                    <Link to='/' style={{textDecoration: 'none'}}><li>O co chodzi?</li></Link>
                 </ScrollTo>
 
-                <ScrollTo style={{textDecoration: 'none'}} activeClassName='active' to="aboutus--section" spy={true} smooth={true} duration={500}>
-                    <li>O nas</li>
+                <ScrollTo style={{textDecoration: 'none'}} activeClassName='active' offset={-60} to="aboutus--section" spy={true} smooth={true} duration={500}>
+                    <Link to='/' style={{textDecoration: 'none'}}><li>O nas</li></Link>
                 </ScrollTo>
 
                 <ScrollTo style={{textDecoration: 'none'}} activeClassName='active' to="organizations--section" spy={true} smooth={true} duration={500}>
-                    <li>Fundacja i organizacje</li>
+                    <Link to='/' style={{textDecoration: 'none'}}><li>Fundacja i organizacje</li></Link>
                 </ScrollTo>
 
                 <ScrollTo style={{textDecoration: 'none'}} activeClassName='active' to="contact--section" spy={true} smooth={true} duration={500}>
-                    <li>Kontakt</li>
+                    <Link to='/' style={{textDecoration: 'none'}}><li>Kontakt</li></Link>
                 </ScrollTo>
             </ul>
         </nav>

@@ -37,6 +37,14 @@
             font-size: 2.375rem;
         }
 
+        .successMsg {
+            color: #1c941c;
+            font-size: 1.125rem;
+            font-weight: 600;
+            line-height: 20px;
+            text-align: center;
+        }
+
         & > form {
 
             .err {
