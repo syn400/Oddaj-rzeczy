@@ -12,21 +12,33 @@ export const HomeWhoWeHelp = () => {
     const [content, setContent] = useState('Foundations');
     const [collection, setCollection] = useState([]);
     const [counter, setCounter] = useState([0, 3]);
-    const [currentPage, setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const [foundations, setFoundations] = useState([]);
+    const [organizations, setOrganizations] = useState([]);
+    const [local, setLocal] = useState([]);
     
     const getCollection = (val) => {
         db.collection(val).get().then(documentSnapshot => {
             let array = [];
             documentSnapshot.forEach((doc) => {
-                array.push(doc.data())
+                array.push(doc.data());
             })
-            setCollection(array)
+            if(val === 'Foundations') {
+                setFoundations(array);
+                setCollection(array);
+            } else if (val === 'Organizations') {
+                setOrganizations(array);
+            } else {
+                setLocal(array);
             }
-        )
+        })
     }
     
     useEffect(()=>{
-        getCollection('Foundations')
+        getCollection('Foundations');
+        getCollection('Organizations');
+        getCollection('Local');
     }, [])
 
     const showParagraph = () => {
@@ -71,7 +83,6 @@ export const HomeWhoWeHelp = () => {
         }
     }
 
-
     return (
         <section id='organizations--section'>
             <div className='organizations--container'>
@@ -82,7 +93,7 @@ export const HomeWhoWeHelp = () => {
                         className={content === 'Foundations' ? 'active' : null} 
                         onClick={()=> {
                             setContent('Foundations');
-                            getCollection('Foundations');
+                            setCollection(foundations);
                             setCurrentPage(1);
                             setCounter([0, 3])
                         }}>Fundacjom</button>
@@ -90,7 +101,7 @@ export const HomeWhoWeHelp = () => {
                         className={content === 'Organizations' ? 'active' : null} 
                         onClick={()=> {
                             setContent('Organizations');
-                            getCollection('Organizations');
+                            setCollection(organizations);
                             setCurrentPage(1);
                             setCounter([0, 3])
                         }}>Organizacjom<br/>pozarządowym</button>
@@ -98,7 +109,7 @@ export const HomeWhoWeHelp = () => {
                         className={content === 'Local' ? 'active' : null} 
                         onClick={()=> {
                             setContent('Local');
-                            getCollection('Local');
+                            setCollection(local);
                             setCurrentPage(1);
                             setCounter([0, 3])
                         }}>Lokalnym<br/>zbiórkom</button>
