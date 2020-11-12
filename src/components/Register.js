@@ -30,10 +30,16 @@ export const Register = () => {
                         
                             if (!values.password) {
                                 errors.password = 'Hasło jest wymagane!';
+                            } else if (
+                                !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(values.password) 
+                            ) {
+                                errors.password = `Hasło musi mieć minimum 6 znaków oraz zawierać cyfrę, małą i wielką literę`
                             }
 
                             if (!values.repeatPassword) {
                                 errors.repeatPassword = 'Powtórz hasło!'
+                            } else if (values.repeatPassword !== values.password) {
+                                errors.repeatPassword = 'Hasła nie są identyczne!'
                             }
                         
                             return errors;

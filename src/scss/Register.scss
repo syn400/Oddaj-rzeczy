@@ -1,5 +1,9 @@
 section.register {
     .form--inputs {
         height: 20.5rem;
+
+        div.err {
+            width: 16rem;
+        }
     }
 }

@@ -44,8 +44,7 @@
 
         & > .result--list {
             width: 84rem;
-
-
+            height: 22rem;
 
             li {
                 height: 7.5rem;
@@ -69,6 +68,23 @@
                 &:nth-child(2n+0) {
                     border-top: 1px solid;
                     border-bottom: 1px solid;
+                }
+            }
+        }
+
+        & > .pagination {
+            height: 3rem;
+            ul {
+                display: flex;
+                justify-content: center;
+
+                li {
+                    padding: 0.6rem;
+                    margin: 0 0.2rem;
+
+                    &.active {
+                        border: 0.75px solid;
+                    }
                 }
             }
         }
