@@ -3,8 +3,14 @@ import decoration from '../assets/Decoration.svg';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {Link} from 'react-router-dom';
 import '../scss/Register.scss';
+import firebase from 'firebase/app';
+import { useHistory } from "react-router-dom";
+
+
 
 export const Register = () => { 
+    const history = useHistory();
+    
     return (
         <>
             <header style={{background: 'none', height: 0}}>
@@ -26,7 +32,7 @@ export const Register = () => {
                                 !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
                             ) {
                                 errors.email = 'Podany adres email jest nieprawidłowy!';
-                            } 
+                            }
                         
                             if (!values.password) {
                                 errors.password = 'Hasło jest wymagane!';
@@ -45,9 +51,21 @@ export const Register = () => {
                             return errors;
                         }}
 
-                        onSubmit={(values) => console.log(values)}
+                        onSubmit={(values,{setErrors}) => {
+
+                            firebase.auth()
+                            .createUserWithEmailAndPassword(values.email, values.password)
+                            .then(()=>{
+                                history.push('/');
+                            })
+                            .catch((error) => {
+                                if(error.code === 'auth/email-already-in-use') {
+                                    setErrors({email: 'Ten adres email został już użyty!'});
+                                }
+                            })
+                        }}
                     >
-                        {({ isSubmitting, errors, touched }) => (
+                        {({ isSubmitting, errors, touched}) => (
                             <Form>
                                 <div className='form--inputs'>
                                     <div>
