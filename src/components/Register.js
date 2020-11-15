@@ -92,7 +92,7 @@ export const Register = () => {
                                         <p>Zaloguj się</p>
                                     </Link>
 
-                                    <button type="submit" disabled={isSubmitting}>
+                                    <button type="submit">
                                         Załóż konto
                                     </button>
                                 </div>

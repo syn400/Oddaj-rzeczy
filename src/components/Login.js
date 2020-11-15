@@ -3,8 +3,12 @@ import decoration from '../assets/Decoration.svg';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {Link} from 'react-router-dom';
 import '../scss/Login.scss';
+import firebase from 'firebase/app';
+import { useHistory } from "react-router-dom";
 
 export const Login = () => { 
+    const history = useHistory();
+
     return (
         <>
             <header style={{background: 'none', height: 0}}>
@@ -15,7 +19,7 @@ export const Login = () => {
                 <img src={decoration} alt='decoration' />
                 <div>
                     <Formik
-                    initialValues={{email: '', password: '' }}
+                        initialValues={{email: '', password: '' }}
 
                         validate={values => {
                             const errors = {};
@@ -35,7 +39,17 @@ export const Login = () => {
                             return errors;
                         }}
 
-                        onSubmit={(values) => console.log(values)}
+                        onSubmit={(values, {setErrors}) => {
+                            firebase.auth()
+                                .signInWithEmailAndPassword(values.email, values.password)
+                                .then(()=>{
+                                    history.push('/');
+                                })
+                                .catch((error) => {
+                                    setErrors({email: 'Niepoprawny adres email lub hasło!'});
+                                }
+                            );
+                        }}
                     >
                         {({ isSubmitting, errors, touched }) => (
                             <Form>
@@ -58,7 +72,7 @@ export const Login = () => {
                                         <p>Załóz Konto</p>
                                     </Link>
 
-                                    <button type="submit" disabled={isSubmitting}>
+                                    <button type="submit">
                                         Zaloguj się
                                     </button>
                                 </div>
