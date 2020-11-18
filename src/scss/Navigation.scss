@@ -14,16 +14,48 @@ nav {
         display: flex;
     }
 
-    & > div {
+    & > div.default--login {
         justify-content: flex-end;
+        align-items: center;
+        margin-right: 1.25rem;
         p {
-            padding: 0.5rem 0.6rem;
+            padding: 0.8rem 0.6rem;
+            margin-left: 0.8rem;
             color: $color-text-light;
             font-size: 0.875rem;
 
-            &.register--btn {
+            &.main--btn {
                 border: 1px solid $color-primary;
             }
+        }
+    }
+
+    & > div.logged--in {
+        justify-content: flex-end;
+        align-items: center;
+
+        h2 {
+            color: #000;
+            font-size: 0.875rem;
+        }
+
+        p.main--btn {
+            border: 1px solid $color-primary;
+            padding: 0.8rem 0.3rem;
+            color: #000;
+            font-size: 0.8125rem;
+        }
+
+        p {
+            margin-left: 1rem;
+            cursor: pointer;
+        }
+
+        p.logout--btn {
+            padding: 0.8rem 0.6rem;
+            margin-left: 0.8rem;
+            color: $color-text-light;
+            font-size: 0.875rem;
         }
     }
 
