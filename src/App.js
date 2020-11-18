@@ -6,6 +6,8 @@ import { Register } from './components/Register.js';
 import { NotFound } from './components/NotFound';
 import { AuthProvider } from './Auth';
 import { LogOut } from './components/LogOut';
+import { PrivateRoute } from './components/PrivateRoute';
+import { Form } from './components/Form';
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
           <Route exact path='/logowanie' component={Login} />
           <Route exact path='/rejestracja' component={Register} />
           <Route exact path='/wylogowano' component={LogOut} />
+          <PrivateRoute exact path='/oddaj-rzeczy' component={Form} />
           <Route path='' component={NotFound}/>
         </Switch>
       </Router>

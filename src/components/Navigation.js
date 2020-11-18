@@ -19,7 +19,7 @@ export const Navigation = () => {
                         <h2>Cześć {currentUser.email}!</h2>
                     </PrivateRoute>
 
-                    <Link style={{textDecoration: 'none'}} to='/rejestracja'>
+                    <Link style={{textDecoration: 'none'}} to='/oddaj-rzeczy'>
                         <p className='main--btn'>Oddaj rzeczy</p>
                     </Link>
 
