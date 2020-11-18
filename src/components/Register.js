@@ -65,7 +65,7 @@ export const Register = () => {
                             })
                         }}
                     >
-                        {({ isSubmitting, errors, touched}) => (
+                        {({errors, touched}) => (
                             <Form>
                                 <div className='form--inputs'>
                                     <div>

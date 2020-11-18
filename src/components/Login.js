@@ -51,7 +51,7 @@ export const Login = () => {
                             );
                         }}
                     >
-                        {({ isSubmitting, errors, touched }) => (
+                        {({errors, touched }) => (
                             <Form>
                                 <div className='form--inputs'>
                                     <div>
