@@ -13,9 +13,7 @@ export const Register = () => {
     
     return (
         <>
-            <header style={{background: 'none', height: 0}}>
-                <Navigation />
-            </header>
+            <Navigation />
             <section className='register'>
                 <h2>Załóż konto</h2>
                 <img src={decoration} alt='decoration' />

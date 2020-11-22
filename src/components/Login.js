@@ -11,9 +11,7 @@ export const Login = () => {
 
     return (
         <>
-            <header style={{background: 'none', height: 0}}>
-                <Navigation />
-            </header>
+            <Navigation />
             <section className='login'>
                 <h2>Zaloguj się</h2>
                 <img src={decoration} alt='decoration' />

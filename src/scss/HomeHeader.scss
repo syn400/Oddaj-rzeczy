@@ -12,7 +12,7 @@ header {
     & > div {
         display: flex;
         flex-direction: column;
-        margin-right: 17rem;
+        margin-right: 14vw;
         margin-top: 21rem;
 
         img {
@@ -45,3 +45,160 @@ header {
         }
     }
 }
+
+
+
+@media (max-width: 1900px) {
+    header {
+        & > div {
+            margin-right: 8vw;
+        }
+    }
+}
+
+
+
+@media (max-width: 1700px) {
+    header {
+        background-size: cover;
+        background-position: -22rem 20rem;
+    
+        & > div {
+            margin-top: 18rem;
+
+            img {
+                height: 2.5rem;
+            }
+        }
+    }
+}
+
+
+
+
+@media (max-width: 1400px) {
+    header {
+        height: 75rem;
+        background-position: -17rem 37rem;
+        background-size: 100%;
+        
+        & > div {
+            margin: 15rem auto;
+            
+            & > div {
+                justify-content: space-evenly;
+            }
+            h2 {
+                font-size: 3rem;
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 1200px) {
+    header {
+        height: 60rem;
+        background-position: -17rem 30rem;
+    
+        & > div {
+            margin: 7rem auto;
+        }
+    }
+}
+
+
+
+@media (max-width: 985px) {
+    header {
+        background-position: -15rem 37rem;
+        background-size: 120%;
+        & > div {
+            width: 90%;
+
+            h2 {
+                line-height: 80px;
+                font-size: 3.5rem;
+            }
+        }
+    }
+}
+
+
+
+
+@media (max-width: 800px) {
+    header {
+        background: none;
+        height: 120vw;
+        &:before {
+            height: 120vw;
+            width: 100vw;
+            content: '';
+            position: absolute;
+            background-image: url('../assets/Home-Hero-Image.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1;
+            background-position: -30rem 5rem;
+
+            opacity: 20%;
+        }
+
+        & > div {
+            height: 100%;
+            margin: 0 auto;
+            justify-content: center;
+
+            img {
+                margin: 1.5rem 0;
+            }
+
+            h2 {
+                font-size: 7vw;
+                line-height: 10vw;
+            }
+
+            & > div {
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                height: 17rem;
+    
+                p {
+                    width: 70vw;
+                }
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 500px) {
+    header {
+        height: 170vw;
+
+        &:before {
+            background-position: -10rem 5rem;
+            height: 170vw;
+        }
+        
+        & > div {
+            h2 {
+                font-size: 8vw;
+            }
+            
+            & > div {
+                height: 55vw;
+                p {
+                    font-size: 8vw;
+                    line-height: 9vw;
+                    height: 25vw;
+                }
+            }
+        }
+    }
+}
+

@@ -1,10 +1,9 @@
 @import './settings/colors';
 
 section.login, section.register{
-    height: 60rem;
     display: flex;
     align-items: center;
-    margin-top: 15rem;
+    margin-top: 10rem;
     flex-direction: column;
 
     & > img {

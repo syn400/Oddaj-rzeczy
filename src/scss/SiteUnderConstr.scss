@@ -1,0 +1,22 @@
+@import './settings/colors';
+
+section.under--construction {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+        font-size: 5vw;
+        margin: 3rem 0 10rem 0;
+    }
+
+    p {
+        font-size: 2vw;
+        color: $color-text;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
