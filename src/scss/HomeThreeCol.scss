@@ -8,6 +8,7 @@ section.three--col {
     align-items: center;
     & > div {
         width: 21rem;
+        margin: 0 3rem;
         text-align: center;
         font-weight: 300;
 
@@ -19,7 +20,6 @@ section.three--col {
         h3 {
             font-size: 1.125rem;
             text-transform: uppercase;
-            margin-bottom: 1rem;
             font-weight: 400;
             margin: 1.75rem 0;
         }
@@ -27,6 +27,92 @@ section.three--col {
         p {
             line-height: 26px;
             letter-spacing: -0.32px;
+        }
+    }
+}
+
+
+
+@media (max-width: 1100px) {
+    section.three--col {
+        height: 20rem;
+        & > div {
+            margin: 0 1.5rem;
+            h2 {
+                font-size: 4rem;
+            }
+            
+            h3 {
+                font-size: 1rem;
+            }
+    
+            p {
+                line-height: 20px;
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 830px) {
+    section.three--col {
+        height: 55rem;
+        flex-direction: column;
+        background-size: 150%;
+        & > div {
+            width: 70%;
+            h2 {
+                font-size: 5.6rem;
+            }
+            
+            h3 {
+                font-size: 1.125rem;
+            }
+    
+            p {
+                line-height: 26px;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 420px) {
+    section.three--col {
+        height: 50rem;
+        & > div {
+            h2 {
+                font-size: 4.6rem;
+            }
+            
+            h3 {
+                margin: 1rem 0;
+            }
+    
+            p {
+                font-size: .8rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 300px) {
+    section.three--col {
+        height: 40rem;
+        & > div {
+            width: 80%;
+            h2 {
+                font-size: 3.6rem;
+            }
+            
+            h3 {
+                margin: 0.8rem 0;
+            }
+    
+            p {
+                font-size: .6rem;
+            }
         }
     }
 }

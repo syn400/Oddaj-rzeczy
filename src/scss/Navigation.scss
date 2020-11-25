@@ -209,25 +209,25 @@ nav {
 @media (max-width: 650px) {
     nav {
         & > div {
-
             & > div.default--login {
                 p {
                     padding: 1.3rem 0;
                     width: 13rem;
                     font-size: 1.3rem;
-
+                    
                     &.main--btn {
                         margin-bottom: 2rem;
                     }
                 }
             }
-
-        
+            
+            
             & > div.logged--in {
                 h2 {
                     font-size: 1.2rem;
+                    text-align: center;
                 }
-        
+                
                 p {
                     padding: 1.3rem 0;
                     width: 13rem;
@@ -237,18 +237,17 @@ nav {
                         margin-top: 2rem;
                     }
                 }
-        
+                
                 p.logout--btn {
                     padding: 1.3rem 0;
                     font-size: 1.3rem;
                     margin-bottom: 2rem;
                 }
             }
-
-
-
-
-        
+            
+            
+            
+            
             & > ul {
                 a {
                     font-size: 1.3rem;
@@ -257,12 +256,12 @@ nav {
                     }
                 }
             }
-        
+            
             .active {
                 border: none;
             }
         }
-
+        
         & > div.mobile {
             display: none;
         }
