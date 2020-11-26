@@ -47,7 +47,7 @@ export const HomeSimpleSteps = () => {
             </div>
 
             <div className='steps--btn'>
-                <Link style={{textDecoration:'none'}} to='/logowanie'>
+                <Link style={{textDecoration:'none'}} to='/oddaj-rzeczy'>
                     <p>Oddaj <br/> rzeczy</p>
                 </Link>
             </div>

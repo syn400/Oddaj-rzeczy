@@ -1,14 +1,17 @@
 import {Link} from "react-router-dom";
 import '../scss/Navigation.scss';
 import * as Scroll from 'react-scroll';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {AuthContext} from '../Auth';
 import { PrivateRoute } from './PrivateRoute';
 import firebase from '../fire';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 let ScrollTo = Scroll.Link;
 
 export const Navigation = () => {
+    const [menuVisible, setMenuVisible] = useState(false);
     let {currentUser} = useContext(AuthContext);
 
     const isLoggedIn = () => {
@@ -19,7 +22,7 @@ export const Navigation = () => {
                         <h2>Cześć {currentUser.email}!</h2>
                     </PrivateRoute>
 
-                    <Link style={{textDecoration: 'none'}} to='/rejestracja'>
+                    <Link style={{textDecoration: 'none'}} to='/oddaj-rzeczy'>
                         <p className='main--btn'>Oddaj rzeczy</p>
                     </Link>
 
@@ -45,29 +48,35 @@ export const Navigation = () => {
 
     return (
         <nav>
-            {isLoggedIn()}
+            <button onClick={()=>setMenuVisible(!menuVisible)}>
+                <p>{menuVisible ?  <FontAwesomeIcon icon={faTimes} /> : <FontAwesomeIcon icon={faBars} />}</p>
+            </button>
 
-            <ul>
-                <ScrollTo style={{textDecoration: 'none'}} activeClassName='active'  to="header--section" spy={true} smooth={true} duration={500}>
-                    <Link to='/' style={{textDecoration: 'none'}}><li>Start</li></Link>
-                </ScrollTo>
+            <div className={menuVisible ? 'visible' : null}>
+                {isLoggedIn()}
 
-                <ScrollTo style={{textDecoration: 'none'}} activeClassName='active' offset={-200} to="steps--section" spy={true} smooth={true} duration={500}>
-                    <Link to='/' style={{textDecoration: 'none'}}><li>O co chodzi?</li></Link>
-                </ScrollTo>
+                <ul>
+                    <ScrollTo style={{textDecoration: 'none'}} activeClassName='active'  to="header--section" spy={true} smooth={true} duration={500}>
+                        <Link to='/' style={{textDecoration: 'none'}}><li onClick={()=>setMenuVisible(false)}>Start</li></Link>
+                    </ScrollTo>
 
-                <ScrollTo style={{textDecoration: 'none'}} activeClassName='active' offset={-60} to="aboutus--section" spy={true} smooth={true} duration={500}>
-                    <Link to='/' style={{textDecoration: 'none'}}><li>O nas</li></Link>
-                </ScrollTo>
+                    <ScrollTo style={{textDecoration: 'none'}} activeClassName='active' offset={-200} to="steps--section" spy={true} smooth={true} duration={500}>
+                        <Link to='/' style={{textDecoration: 'none'}}><li onClick={()=>setMenuVisible(false)}>O co chodzi?</li></Link>
+                    </ScrollTo>
 
-                <ScrollTo style={{textDecoration: 'none'}} activeClassName='active' to="organizations--section" spy={true} smooth={true} duration={500}>
-                    <Link to='/' style={{textDecoration: 'none'}}><li>Fundacja i organizacje</li></Link>
-                </ScrollTo>
+                    <ScrollTo style={{textDecoration: 'none'}} activeClassName='active' offset={-60} to="aboutus--section" spy={true} smooth={true} duration={500}>
+                        <Link to='/' style={{textDecoration: 'none'}}><li onClick={()=>setMenuVisible(false)}>O nas</li></Link>
+                    </ScrollTo>
 
-                <ScrollTo style={{textDecoration: 'none'}} activeClassName='active' to="contact--section" spy={true} smooth={true} duration={500}>
-                    <Link to='/' style={{textDecoration: 'none'}}><li>Kontakt</li></Link>
-                </ScrollTo>
-            </ul>
+                    <ScrollTo style={{textDecoration: 'none'}} activeClassName='active' to="organizations--section" spy={true} smooth={true} duration={500}>
+                        <Link to='/' style={{textDecoration: 'none'}}><li onClick={()=>setMenuVisible(false)}>Fundacja i organizacje</li></Link>
+                    </ScrollTo>
+
+                    <ScrollTo style={{textDecoration: 'none'}} activeClassName='active' to="contact--section" spy={true} smooth={true} duration={500}>
+                        <Link to='/' style={{textDecoration: 'none'}}><li onClick={()=>setMenuVisible(false)}>Kontakt</li></Link>
+                    </ScrollTo>
+                </ul>
+            </div>
         </nav>
     )
 }

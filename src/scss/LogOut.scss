@@ -4,7 +4,7 @@ section.logout--section {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 85vh;
     flex-direction: column;
     
     h1 {
@@ -23,5 +23,16 @@ section.logout--section {
         border: 0.75px solid;
         font-weight: 300;
         color: $color-text;
+    }
+}
+
+
+@media (max-width: 580px) {
+    section.logout--section {
+        
+        h1 {
+            width: 80vw;
+            font-size: 8vw;
+        }
     }
 }

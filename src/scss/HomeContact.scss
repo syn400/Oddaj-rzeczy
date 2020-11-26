@@ -12,10 +12,10 @@
         content: "";
         z-index: -1;
         width: 100%;
-        height: 100%;
+        height: 67rem;
         position: absolute;
         background-image: url('../assets/Background-Contact-Form.jpg');
-        background-size: 105%;
+        background-size: cover;
         background-repeat: no-repeat;
         opacity: 0.2;
     }
@@ -88,12 +88,8 @@
                     background: none;
 
                     &::placeholder {
-                        color: #3C3C3C26;
+                        opacity: 20%;
                     }
-                }
-
-                .red--border {
-                    border-bottom: 1px solid #e72e15;
                 }
             }
 
@@ -132,5 +128,99 @@
 
     .form--container, .footer--container {
         margin-right: 10rem;
+    }
+}
+
+
+
+@media (max-width: 1400px) {
+    
+    #contact--section {
+        align-items: center;
+    
+        .footer--container {
+            & > div {
+                position: static;
+            }
+        }
+    
+        .form--container, .footer--container {
+            margin-right: 0;
+        }
+    }
+}
+
+
+@media (max-width: 630px) {
+    #contact--section {
+        align-items: center;
+
+        .form--container {
+            & > h2 {
+                font-size: 2rem;
+            }
+            & > form {
+                .err {
+                    margin-right: 2rem;
+                }
+                .contact--form {
+                    width: 85vw;
+
+                    input[name='name'], input[name='email'] {
+                        width: 40vw;
+                    }
+    
+                    textarea[name='message'] {
+                        width: 85vw;
+                    }
+                }
+            }
+        }
+    
+        .footer--container {
+            width: 100vw;
+            & > div {
+                position: static;
+    
+                a {
+                    margin-left: 1.5rem;
+                }
+            }
+        }
+    
+        .form--container, .footer--container {
+            margin-right: 0;
+        }
+    }
+}
+
+
+
+
+@media (max-width: 450px) {
+    #contact--section {
+        align-items: center;
+
+        .form--container {
+            & > h2 {
+                font-size: 7vw;
+            }
+            & > form {
+                .contact--form {
+                    input[name='name'], input[name='email'] {
+                        width: 85vw;
+                    }
+                }
+            }
+        }
+    
+        .footer--container {
+            p {
+                font-size: 4vw;
+            }
+            & > div {
+                position: static;
+            }
+        }
     }
 }

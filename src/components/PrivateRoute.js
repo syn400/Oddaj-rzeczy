@@ -11,9 +11,8 @@ export const PrivateRoute = ({component: RouteComponent, ...rest}) => {
             !!currentUser ? (
                 <RouteComponent {...routeProps} />
             ) : (
-                Redirect('/')
-            )
-        }
-    />
+                <Redirect to='/logowanie'/>
+            )}
+        />
     );
 }

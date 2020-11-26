@@ -1,11 +1,12 @@
 @import './settings/colors';
 
 #aboutus--section {
-    height: 58.5rem;
+    height: 49vw;
     background-color: $color-secondary;
     background-image: url('../assets/People.jpg');
     background-repeat: no-repeat;
     background-position: 50vw;
+    background-size: 70vw;
 
     & > div {
         width: 50vw;
@@ -27,13 +28,74 @@
         p {
             font-size: 1.875rem;
             line-height: 54px;
-            width: 41rem;
+            width: 40vw;
         }
 
         img.signature {
             position: relative;
             right: -15rem;
             top: 2rem;
+        }
+    }
+}
+
+
+
+@media (max-width: 1600px) {
+    #aboutus--section {
+        & > div {
+            h2 {
+                font-size: 2.5vw;
+            }
+    
+            img.decoration {
+                margin: 2.5vw 0;
+            }
+    
+            p {
+                font-size: 2vw;
+                line-height: 3.5vw;
+            }
+    
+            img.signature {
+                width: 14vw;
+                right: -14vw;
+                top: 3vw;
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 830px) {
+
+    #aboutus--section {
+        height: 140vw;
+        background-position: 0 70vw;
+        background-size: 100vw;
+    
+        & > div {
+            width: 80%;
+            height: 50%;
+
+            margin: 0 auto;
+
+            h2 {
+                font-size: 5vw;
+            }
+
+            p {
+                width: 100%;
+                font-size: 4vw;
+                line-height: 6vw;
+            }
+
+            img.signature {
+                width: 20vw;
+                right: -30vw;
+                top: 3vw;
+            }
         }
     }
 }

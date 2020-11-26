@@ -6,9 +6,7 @@ import { Link } from "react-router-dom";
 export const LogOut = () => {
     return (
         <>
-            <header style={{background: 'none', height: 0}}>
-                <Navigation />
-            </header>
+            <Navigation />
             <section className="logout--section">
                 <h1>Wylogowanie nastąpiło pomyślnie!</h1>
                 <img src={decoration} alt='Dekoracja' />
