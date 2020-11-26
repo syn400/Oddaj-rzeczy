@@ -25,3 +25,14 @@ section.logout--section {
         color: $color-text;
     }
 }
+
+
+@media (max-width: 580px) {
+    section.logout--section {
+        
+        h1 {
+            width: 80vw;
+            font-size: 8vw;
+        }
+    }
+}

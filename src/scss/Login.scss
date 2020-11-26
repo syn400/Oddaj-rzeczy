@@ -82,3 +82,25 @@ section.login, section.register{
         }
     }
 }
+
+
+
+@media (max-width: 600px) {
+    section.login, section.register{
+        & > h2 {
+            font-size: 2.5rem;
+        }
+    
+        .form--inputs {
+            width: 80vw;
+
+            & > div {
+                width: 75%;
+            }
+        }
+    
+        .form--buttons {
+            width: 85vw;
+        }
+    }
+}
