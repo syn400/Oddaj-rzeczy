@@ -70,6 +70,12 @@ section.simple--steps {
             align-items: center;
             text-align: center;
             line-height: 45px;
+
+            transition: transform 0.2s;
+
+            &:hover {
+                transform: scale(1.1);
+            }
         }
     }
 }

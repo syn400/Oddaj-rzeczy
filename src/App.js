@@ -20,7 +20,7 @@ function App() {
           <Route exact path='/logowanie' component={Login} />
           <Route exact path='/rejestracja' component={Register} />
           <Route exact path='/wylogowano' component={LogOut} />
-          <PrivateRoute exact path='/oddaj-rzeczy' component={SiteUnderConstr} />
+          <PrivateRoute exact path='/oddaj-rzeczy' component={Form} />
           <PrivateRoute exact path='/zorganizuj-zbiórkę' component={SiteUnderConstr} />
           <Route path='' component={NotFound}/>
         </Switch>

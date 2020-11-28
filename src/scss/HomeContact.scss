@@ -102,6 +102,13 @@
                 width: 9.3rem;
                 height: 3.1rem;
                 margin-top: 2.5rem;
+                cursor: pointer;
+
+                transition: transform 0.2s;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
             }
         }
     }
@@ -122,6 +129,14 @@
 
             a {
                 margin-left: 1.5rem;
+
+                img {
+                    transition: transform 0.2s;
+    
+                    &:hover {
+                        transform: scale(1.2);
+                    }
+                }
             }
         }
     }
