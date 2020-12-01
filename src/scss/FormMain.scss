@@ -1,0 +1,203 @@
+@import './settings/colors';
+@import './settings/fonts';
+
+section.form--container {
+    div.warning {
+        height: 11.2rem;
+        background-color: $color-primary;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h1, p {
+            margin-left: 8.5rem;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1.375rem;
+            font-weight: 300;
+            width: 62%;
+            line-height: 30px;
+        }
+    }
+
+    div.form {
+        height: 55.2rem;
+        background-image: url('../assets/Background-Form.jpg');
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        padding: 2.25rem 0 3.125rem 8.5rem;
+
+        .form--content > label {
+            display: block;
+            margin-bottom: 2.6rem;
+            width: 45rem;
+            transition: transform 0.2s;
+
+            &:hover {
+                transform: scale(1.02);
+            }
+            
+            input[type="radio"] {
+                display: none;
+            }
+            
+            span {
+                cursor: pointer;
+                font-size: 1.5rem;
+                font-weight: 300;
+            }
+            
+            input[type="radio"]:checked + span {
+                position: relative;
+                left: calc(-2.5rem - 1.8rem);
+            }
+
+            input[type="radio"]:checked + span::before {
+                content: " ";  
+                display: inline-block;
+                position: relative;
+                top: calc(1rem - 1px);
+                left: -1px;
+                margin: 0 1.8rem 0 0 ;
+                width: 2.5rem;
+                height: 2.5rem;
+                background-color: $color-primary;
+            }
+
+            &:before {
+                content: " ";
+                display: inline-block;
+                position: relative;
+                top: 1rem;
+                margin: 0 1.8rem 0 0;
+                width: 2.5rem;
+                height: 2.5rem;
+                border: 0.75px solid;
+                z-index: 1;
+                cursor: pointer;
+            }
+        }
+
+        & > div {
+            & > .form--content {
+                margin-top: 2rem;
+
+                p {
+                    font-size: 1.5rem;
+                    font-weight: 300;
+                }
+
+
+            }
+
+            & > .page--2 {
+                display: flex;
+                align-items: center;
+
+                p {
+                    margin-right: 1rem;
+                }
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    font-family: $font-base;
+                    font-size: 1.5rem;
+                    font-weight: 300;
+                    padding-left: 1rem;
+                    color: $color-text;
+
+                    background: none;
+                    height: 3rem;
+                    width: 14rem;
+                    border: 0.75px solid;
+
+                    cursor: pointer;
+                }
+
+                div.dropdown--select {
+                    position: absolute;
+                    margin: 1rem 0 0 8rem;
+
+                    width: 6rem;
+                    border: 0.75px solid;
+
+                    label {
+                        height: 3rem;
+                        display: flex;
+                        align-items: center;
+                        font-size: 1.5rem;
+                        font-weight: 300;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: #7373731e;
+                        }
+
+                        span {
+                            margin: 0 auto;
+                        }
+                    }
+
+                    input[type="radio"] {
+                        display: none;
+                    }
+                }
+            }
+
+            & > p {
+                font-size: 1.5rem;
+                font-weight: 300;
+
+                a:hover {
+                    color: red;
+                }
+            }
+
+            & > h2 {
+                font-size: 2.25rem;
+                font-weight: 600;
+                color: #000;
+
+                margin-top: 3.75rem;
+            }
+            
+            & > button {
+                cursor: pointer;
+
+                font-family: $font-base;
+                color: $color-text;
+
+                background: none;
+                border: 0.75px solid;
+                font-size: 1.5rem;
+                font-weight: 300;
+
+                width: 11.25rem;
+                height: 5rem;
+
+                transition: transform 0.2s;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+
+            & > button:first-child {
+                margin-right: 3rem;
+            }
+        }
+    }
+}
