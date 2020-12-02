@@ -1,0 +1,399 @@
+@import './settings/colors';
+@import './settings/fonts';
+
+section.form--container {
+    div.warning {
+        height: 11.2rem;
+        background-color: $color-primary;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h1, p {
+            margin-left: 8.5rem;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1.375rem;
+            font-weight: 300;
+            width: 62%;
+            line-height: 30px;
+        }
+    }
+
+    div.form {
+        height: 55.2rem;
+        background-image: url('../assets/Background-Form.jpg');
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        padding: 2.25rem 0 3.125rem 8.5rem;
+
+        .form--content > label {
+            display: block;
+            margin-bottom: 2.6rem;
+            width: 45rem;
+            transition: transform 0.2s;
+
+            &:hover {
+                transform: scale(1.02);
+            }
+            
+            input[type="radio"] {
+                display: none;
+            }
+            
+            span {
+                cursor: pointer;
+                font-size: 1.5rem;
+                font-weight: 300;
+            }
+            
+            input[type="radio"]:checked + span {
+                position: relative;
+                left: calc(-2.5rem - 1.8rem);
+            }
+
+            input[type="radio"]:checked + span::before {
+                content: " ";  
+                display: inline-block;
+                position: relative;
+                top: calc(1rem - 1px);
+                left: -1px;
+                margin: 0 1.8rem 0 0 ;
+                width: 2.5rem;
+                height: 2.5rem;
+                background-color: $color-primary;
+            }
+
+            &:before {
+                content: " ";
+                display: inline-block;
+                position: relative;
+                top: 1rem;
+                margin: 0 1.8rem 0 0;
+                width: 2.5rem;
+                height: 2.5rem;
+                border: 0.75px solid;
+                z-index: 1;
+                cursor: pointer;
+            }
+        }
+
+        & > div {
+            & > .form--content {
+                margin-top: 2rem;
+
+                p {
+                    font-size: 1.5rem;
+                    font-weight: 300;
+                }
+
+
+            }
+
+            & > .page--2 {
+                display: flex;
+                align-items: center;
+
+                p {
+                    margin-right: 1rem;
+                }
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    font-family: $font-base;
+                    font-size: 1.5rem;
+                    font-weight: 300;
+                    padding-left: 1rem;
+                    color: $color-text;
+
+                    background: none;
+                    height: 3rem;
+                    width: 14rem;
+                    border: 0.75px solid;
+
+                    cursor: pointer;
+                }
+
+                div.dropdown--select {
+                    position: absolute;
+                    margin: 1rem 0 0 8rem;
+
+                    width: 6rem;
+                    border: 0.75px solid;
+
+                    label {
+                        height: 3rem;
+                        display: flex;
+                        align-items: center;
+                        font-size: 1.5rem;
+                        font-weight: 300;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: #7373731e;
+                        }
+
+                        span {
+                            margin: 0 auto;
+                        }
+                    }
+
+                    input[type="radio"] {
+                        display: none;
+                    }
+                }
+            }
+
+            & > .page--3 {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                button {
+                    width: 18.5rem;
+                }
+
+                div.dropdown--select {
+                    margin: 1rem 0 0 0;
+                    width: 18.5rem;
+                    background-color: #E8E9E4;
+                    z-index: 1;
+
+                    label {
+                        span {
+                            margin-left: 1rem;
+                        }
+                    }
+                }
+
+                div.group--select {
+                    width: 45rem;
+
+                    h2 {
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        color: #000;
+
+                        margin: 3.125rem 0 2rem 0;
+                    }
+
+                    & > div {
+                        display: flex;
+                        flex-wrap: wrap;
+                        
+                        label {
+                            margin: 0 1.5rem 1.5rem 0;
+                            padding: 1rem 0;
+                            transition: transform 0.3s;
+                            
+                            &:hover {
+                                transform: scale(1.05);
+                                z-index: 0;
+                            }
+                                
+                            input[type="radio"] {
+                                display: none;
+                            }
+                                
+                            span {
+                                cursor: pointer;
+                                font-size: 1.5rem;
+                                font-weight: 300;
+                                padding: 0.7rem 1.6rem;
+                                border: 0.75px solid;
+                            }
+                            
+                            input[type="radio"]:checked + span {
+                                background-color: $color-primary;
+                            }
+                        }
+                    }
+                }
+
+                div.organization {
+                    h2 {
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        color: #000;
+                        margin: 1.625rem 0 2rem 0;
+                    }
+
+                    input {
+                        color: $color-text;
+                        width: 34.5rem;
+                        height: 2.5rem;
+                        border: 0.75px solid;
+                        background: none;
+
+                        font-family: $font-base;
+                        font-weight: 300;
+                        font-size: 1.5rem;
+                        padding: 0 0.5rem
+                    }
+                }
+            }
+
+
+            & > .page--4 {
+                display: flex;
+                margin-top: 4rem;
+                width: 60rem;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                
+                & > div {
+                    width: 25rem;
+                    display: flex;
+                    flex-direction: column;
+
+                    h2 {
+                        font-weight: 600;
+                        color: #000;
+                    }
+
+                    h2, label, input, textarea {
+                        font-size: 1.5rem;
+                    }
+
+                    p {
+                        width: 16rem;
+                    }
+
+                    label {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        font-weight: 300;
+                        margin-top: 1.25rem;
+                        line-height: 32px;
+                    }
+
+                    input, textarea {
+                        height: 2.5rem;
+                        width: 15rem;
+                        background: none;
+                        border: 0.75px solid;
+                        font-family: $font-base;
+                        font-weight: 300;
+                        color: $color-text;
+                        padding: 0 0.5rem
+                    }
+
+                    .comments--label {
+                        align-items: flex-start;;
+
+                        textarea {
+                            align-items: flex-start;
+                            height: 8rem;
+                            resize: none;
+                        }
+                    }
+                }
+            }
+
+            & > .page--5 {
+                div:nth-child(1) {
+                    width: 60rem;
+                    margin-bottom: 3rem;
+
+                    div {
+                        margin-top: 1.25rem;
+                        display: flex;
+                        align-items: center;
+
+                        img {
+                            width: 3.125rem;
+                            margin-right: 1rem;
+                        }
+
+                        p {
+                            width: 100%;
+                            color: #000;
+                            word-wrap: break-word
+                        }
+                    }
+                }
+
+                div:nth-child(2), div:nth-child(3) {
+                    p {
+                        word-wrap: break-word
+                    }
+                }
+
+                span {
+                    font-size: 1.5rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    font-weight: 300;
+                    margin-top: 1.25rem;
+                    line-height: 32px;
+                }
+            }
+
+            & > p {
+                font-size: 1.5rem;
+                font-weight: 300;
+            }
+
+            & > h2 {
+                font-size: 2.25rem;
+                font-weight: 600;
+                color: #000;
+
+                margin-top: 3.75rem;
+            }
+            
+            & > button {
+                cursor: pointer;
+
+                font-family: $font-base;
+                color: $color-text;
+
+                background: none;
+                border: 0.75px solid;
+                font-size: 1.5rem;
+                font-weight: 300;
+
+                width: 11.25rem;
+                height: 5rem;
+
+                transition: transform 0.2s;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+
+            & > button:first-child {
+                margin-right: 3rem;
+            }
+        }
+
+        & > div.last--page {
+            text-align: center;
+            margin: auto 5rem;
+            width: 41rem;
+
+            h1 {
+                font-size: 2.5rem;
+                line-height: 55px;
+                font-weight: 300;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}

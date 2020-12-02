@@ -80,6 +80,14 @@ section.login, section.register{
             cursor: pointer;
             font-weight: 300;
         }
+
+        button, p {
+            transition: transform 0.2s;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
     }
 }
 
