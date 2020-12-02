@@ -13,6 +13,17 @@ import { Link } from 'react-router-dom';
 export const FormMain = () => {
     const [curPage, setCurPage] = useState(1);
     const [selectVisible, setSelectVisible] = useState(false);
+    const [cityVisible, setCityVisible] = useState(false);
+
+    const wordVariety = (counter) => {
+        if(counter === '1') {
+            return 'worek';
+        } else if (counter < 5) {
+            return 'worki';
+        } else {
+            return 'worków';
+        }
+    }
 
     const pagination = (errors, touched, values) => {
           
@@ -87,6 +98,7 @@ export const FormMain = () => {
                                     <button type='button' onClick={()=>setSelectVisible(!selectVisible)}>{values.numberOfBags} <img src={selectVisible ? arrowUp : arrowDown}alt=''/></button>
 
                                     <div className='dropdown--select' style={{display: selectVisible ? 'block' : 'none'}}>
+                                    
                                         <label onClick={()=>setSelectVisible(false)}>
                                             <Field type='radio' name='numberOfBags' value='1'/>
                                             <span>1</span>
@@ -146,15 +158,84 @@ export const FormMain = () => {
 
                             <h2>Lokalizacja:</h2>
                             
-                            <div className="form--content">
+                            <div className="form--content page--2 page--3">
+                                <div>
+                                    <button type='button' onClick={()=>setCityVisible(!cityVisible)}>{values.organization.city} <img src={cityVisible ? arrowUp : arrowDown}alt=''/></button>
 
+                                    <div className='dropdown--select' style={{display: cityVisible ? 'block' : 'none'}}>
+                                        <label onClick={()=>setCityVisible(false)}>
+                                            <Field type='radio' name='organization.city' value='Poznań'/>
+                                            <span>Poznań</span>
+                                        </label>
+
+                                        <label onClick={()=>setCityVisible(false)}>
+                                            <Field type='radio' name='organization.city' value='Warszawa'/>
+                                            <span>Warszawa</span>
+                                        </label>
+
+                                        <label onClick={()=>setCityVisible(false)}>
+                                            <Field type='radio' name='organization.city' value='Kraków'/>
+                                            <span>Kraków</span>
+                                        </label>
+
+                                        <label onClick={()=>setCityVisible(false)}>
+                                            <Field type='radio' name='organization.city' value='Wrocław'/>
+                                            <span>Wrocław</span>
+                                        </label>
+
+                                        <label onClick={()=>setCityVisible(false)}>
+                                            <Field type='radio' name='organization.city' value='Katowice'/>
+                                            <span>Katowice</span>
+                                        </label>
+                                     </div>
+                                </div>
+
+                                <div className='group--select'>
+                                    <h2>Komu chcesz pomóc?</h2>
+
+                                    <div>
+                                        <label>
+                                            <Field type="radio" name="organization.group" value='dzieciom'/>
+                                            <span>dzieciom</span>
+                                        </label>
+
+                                        <label>
+                                            <Field type="radio" name="organization.group" value='samotnym matkom'/>
+                                            <span>samotnym matkom</span>
+                                        </label>
+
+                                        <label>
+                                            <Field type="radio" name="organization.group" value='bezdomnym'/>
+                                            <span>bazdomnym</span>
+                                        </label>
+
+                                        <label>
+                                            <Field type="radio" name="organization.group" value='niepełnosprawnym'/>
+                                            <span>niepełnosprawnym</span>
+                                        </label>
+
+                                        <label>
+                                            <Field type="radio" name="organization.group" value='osobom starszym'/>
+                                            <span>osobom starszym</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div className='organization'>
+                                    <h2>Wpisz nazwę konkretnej organizacji (opcjonalnie)</h2>
+                                    <Field name='organization.organizationName'/>
+                                </div>
                             </div>
 
                             <ErrorMessage name="repeatPassword" component="div" className='err'/>
                         </div>
                         <div>
                             <button type='button' onClick={()=>setCurPage(2)}>Wstecz</button>
-                            <button type='button' onClick={()=>setCurPage(4)}>Dalej</button>
+                            <button type='button' onClick={()=> {
+                                if(values.organization.city !== 'Wybierz' && values.organization.group) {
+                                    setCurPage(4);
+                                }
+                            }}>Dalej</button>
                         </div>
                     </div>
                 </section>
@@ -173,7 +254,7 @@ export const FormMain = () => {
 
                             <h2>Podaj adres oraz termin odbioru rzeczy przez kuriera</h2>
 
-                            <div className="form--content page--3">
+                            <div className="form--content page--4">
                                 <div>
                                     <h2>Adres odbioru:</h2>
 
@@ -229,7 +310,7 @@ export const FormMain = () => {
                             <button type='button' onClick={()=>setCurPage(3)}>Wstecz</button>
                             <button type='button' onClick={()=> {
                                 if(values.address.street && values.address.city && values.address.postCode 
-                                    && values.address.phone && values.term.date && values.term.time && values.term.comments) {
+                                    && values.address.phone && values.term.date && values.term.time) {
                                         setCurPage(5)
                                     }
                                 }}>Dalej</button>
@@ -245,61 +326,62 @@ export const FormMain = () => {
                         <div>
                             <h2>Podsumowanie Twojej darowizny</h2>
 
-                            <div className="form--content page--3 page--5">
+                            <div className="form--content page--4 page--5">
+
                                 <div>
                                     <h2>Oddajesz:</h2>
 
                                     <div>
                                         <img src={tshirt} alt=''/>
-                                        <p>4 worki, ubrania w dobrym stanie, dzieciom</p>
+                                        <p>{values.numberOfBags} {wordVariety(values.numberOfBags)}, {values.category}, {values.organization.group}</p>
                                     </div>
 
                                     <div>
                                         <img src={arrowCircle} alt=''/>
-                                        <p>dla lokalizacji: Warszawa</p>
+                                        <p>dla lokalizacji: {values.organization.city}</p>
                                     </div>
                                 </div>
 
                                 <div>
                                     <h2>Adres odbioru:</h2>
 
-                                    <label>
+                                    <span>
                                         Ulica
                                         <p>{values.address.street}</p>
-                                    </label>
+                                    </span>
 
-                                    <label>
+                                    <span>
                                         Miasto
                                         <p>{values.address.city}</p>
-                                    </label>
+                                    </span>
 
-                                    <label>
+                                    <span>
                                         Kod<br/>pocztowy
                                         <p>{values.address.postCode}</p>
-                                    </label>
+                                    </span>
 
-                                    <label>
+                                    <span>
                                         Numer<br/>telefonu
                                         <p>{values.address.phone}</p>
-                                    </label>
+                                    </span>
                                 </div>
 
                                 <div>
                                     <h2>Termin odbioru:</h2>
-                                    <label>
+                                    <span>
                                         Data
                                         <p>{values.term.date}</p>
-                                    </label>
+                                    </span>
 
-                                    <label>
+                                    <span>
                                         Godzina
                                         <p>{values.term.time}</p>
-                                    </label>
+                                    </span>
 
-                                    <label className='comments--label'>
+                                    <span className='comments--label'>
                                         Uwagi<br/>dla kuriera
                                         <p>{values.term.comments}</p>
-                                    </label>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -330,6 +412,7 @@ export const FormMain = () => {
         initialValues={{
             category: '', 
             numberOfBags: 'Wybierz', 
+            organization: {city: 'Wybierz', group: '', organizationName: ''},
             address: {street: '', city: '', postCode: '', phone: ''},
             term: {date: '', time: '', comments: ''}
         }}
@@ -366,9 +449,6 @@ export const FormMain = () => {
                 }
                 if (!values.term.time) {
                     errors.term.time = 'Pole obowiązkowe!'
-                }
-                if (!values.term.comments) {
-                    errors.term.comments = 'Pole obowiązkowe!'
                 }
             
                 return errors;
