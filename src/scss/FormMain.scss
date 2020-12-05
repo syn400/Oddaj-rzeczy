@@ -37,6 +37,15 @@ section.form--container {
         justify-content: space-between;
 
         padding: 2.25rem 0 3.125rem 8.5rem;
+        position: relative;
+
+        .err {
+            color: #ca1616;
+            position: absolute;
+            bottom: 11rem;
+            left: 8.5rem;
+            font-size: 1.2rem;
+        }
 
         .form--content > label {
             display: block;

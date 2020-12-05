@@ -6,7 +6,7 @@ import tshirt from '../assets/Icon-1.svg';
 import arrowCircle from '../assets/Icon-4.svg';
 
 
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import '../scss/FormMain.scss';
 import { Link } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ export const FormMain = () => {
         }
     }
 
-    const pagination = (errors, touched, values) => {
+    const pagination = (errors, values, validateForm) => {
           
         if(curPage === 1) {
             return (
@@ -43,36 +43,42 @@ export const FormMain = () => {
 
                             <div className='form--content'>
                                 <label>
-                                    <Field type="radio" name="category" value='ubrania, które nadają się do ponownego użycia'/>
+                                    <Field type="radio" name="category" value='ubrania, które nadają się do ponownego użycia' />
                                     <span>ubrania, które nadają się do ponownego użycia</span>
                                 </label>
 
                                 <label>
-                                    <Field type="radio" name="category" value='ubrania, do wyrzucenia'/>
+                                    <Field type="radio" name="category" value='ubrania, do wyrzucenia' />
                                     <span>ubrania, do wyrzucenia</span>
                                 </label>
 
                                 <label>
-                                    <Field type="radio" name="category" value='zabawki'/>
+                                    <Field type="radio" name="category" value='zabawki' />
                                     <span>zabawki</span>
                                 </label>
 
                                 <label>
-                                    <Field type="radio" name="category" value='książki'/>
+                                    <Field type="radio" name="category" value='książki' />
                                     <span>książki</span>
                                 </label>
 
                                 <label>
-                                    <Field type="radio" name="category" value='inne'/>
+                                    <Field type="radio" name="category" value='inne' />
                                     <span>inne</span>
                                 </label>
                             </div>
                         </div>
 
-                        <ErrorMessage name="category" component="div" className='err'/>
+
+                        {errors.category ? <div className='err'>{errors.category}</div> : null}
 
                         <div>
-                            <button type='button'  onClick={()=> values.category ? setCurPage(2) : null}>Dalej</button>
+                            <button type='button' onClick={()=> {
+                                if(values.category) {
+                                    setCurPage(2);
+                                 } else { 
+                                     validateForm();
+                            }}}>Dalej</button>
                         </div>
                     </div>
                 </section>
@@ -100,45 +106,49 @@ export const FormMain = () => {
                                     <div className='dropdown--select' style={{display: selectVisible ? 'block' : 'none'}}>
                                     
                                         <label onClick={()=>setSelectVisible(false)}>
-                                            <Field type='radio' name='numberOfBags' value='1'/>
+                                            <Field type='radio' name='numberOfBags' value='1' />
                                             <span>1</span>
                                         </label>
 
                                         <label onClick={()=>setSelectVisible(false)}>
-                                            <Field type='radio' name='numberOfBags' value='2'/>
+                                            <Field type='radio' name='numberOfBags' value='2' />
                                             <span>2</span>
                                         </label>
 
                                         <label onClick={()=>setSelectVisible(false)}>
-                                            <Field type='radio' name='numberOfBags' value='3'/>
+                                            <Field type='radio' name='numberOfBags' value='3' />
                                             <span>3</span>
                                         </label>
 
                                         <label onClick={()=>setSelectVisible(false)}>
-                                            <Field type='radio' name='numberOfBags' value='4'/>
+                                            <Field type='radio' name='numberOfBags' value='4' />
                                             <span>4</span>
                                         </label>
 
                                         <label onClick={()=>setSelectVisible(false)}>
-                                            <Field type='radio' name='numberOfBags' value='5'/>
+                                            <Field type='radio' name='numberOfBags' value='5' />
                                             <span>5</span>
                                         </label>
 
                                         <label onClick={()=>setSelectVisible(false)}>
-                                            <Field type='radio' name='numberOfBags' value='6'/>
+                                            <Field type='radio' name='numberOfBags' value='6' />
                                             <span>6</span>
                                         </label>
                                     </div>
                                 </div>
                             </div>
-
-                            <ErrorMessage name="numberOfBags" component="div" className='err'/>
-
                         </div>
+
+                        {errors.numberOfBags ? <div className='err'>{errors.numberOfBags}</div> : null}
 
                         <div>
                             <button type='button' onClick={()=>setCurPage(1)}>Wstecz</button>
-                            <button type='button' onClick={()=> values.numberOfBags !== 'Wybierz' ? setCurPage(3) : null}>Dalej</button>
+                            <button type='button' onClick={()=> {
+                                if(values.numberOfBags !== 'Wybierz') {
+                                    setCurPage(3);
+                                 } else { 
+                                    validateForm();
+                            }}}>Dalej</button>
                         </div>
                     </div>
                     
@@ -164,27 +174,27 @@ export const FormMain = () => {
 
                                     <div className='dropdown--select' style={{display: cityVisible ? 'block' : 'none'}}>
                                         <label onClick={()=>setCityVisible(false)}>
-                                            <Field type='radio' name='organization.city' value='Poznań'/>
+                                            <Field type='radio' name='organization.city' value='Poznań' />
                                             <span>Poznań</span>
                                         </label>
 
                                         <label onClick={()=>setCityVisible(false)}>
-                                            <Field type='radio' name='organization.city' value='Warszawa'/>
+                                            <Field type='radio' name='organization.city' value='Warszawa' />
                                             <span>Warszawa</span>
                                         </label>
 
                                         <label onClick={()=>setCityVisible(false)}>
-                                            <Field type='radio' name='organization.city' value='Kraków'/>
+                                            <Field type='radio' name='organization.city' value='Kraków' />
                                             <span>Kraków</span>
                                         </label>
 
                                         <label onClick={()=>setCityVisible(false)}>
-                                            <Field type='radio' name='organization.city' value='Wrocław'/>
+                                            <Field type='radio' name='organization.city' value='Wrocław' />
                                             <span>Wrocław</span>
                                         </label>
 
                                         <label onClick={()=>setCityVisible(false)}>
-                                            <Field type='radio' name='organization.city' value='Katowice'/>
+                                            <Field type='radio' name='organization.city' value='Katowice' />
                                             <span>Katowice</span>
                                         </label>
                                      </div>
@@ -195,30 +205,31 @@ export const FormMain = () => {
 
                                     <div>
                                         <label>
-                                            <Field type="radio" name="organization.group" value='dzieciom'/>
+                                            <Field type="radio" name="organization.group" value='dzieciom' />
                                             <span>dzieciom</span>
                                         </label>
 
                                         <label>
-                                            <Field type="radio" name="organization.group" value='samotnym matkom'/>
+                                            <Field type="radio" name="organization.group" value='samotnym matkom' />
                                             <span>samotnym matkom</span>
                                         </label>
 
                                         <label>
-                                            <Field type="radio" name="organization.group" value='bezdomnym'/>
+                                            <Field type="radio" name="organization.group" value='bezdomnym' />
                                             <span>bazdomnym</span>
                                         </label>
 
                                         <label>
-                                            <Field type="radio" name="organization.group" value='niepełnosprawnym'/>
+                                            <Field type="radio" name="organization.group" value='niepełnosprawnym' />
                                             <span>niepełnosprawnym</span>
                                         </label>
 
                                         <label>
-                                            <Field type="radio" name="organization.group" value='osobom starszym'/>
+                                            <Field type="radio" name="organization.group" value='osobom starszym' />
                                             <span>osobom starszym</span>
                                         </label>
                                     </div>
+
                                 </div>
 
                                 <div className='organization'>
@@ -226,16 +237,18 @@ export const FormMain = () => {
                                     <Field name='organization.organizationName'/>
                                 </div>
                             </div>
-
-                            <ErrorMessage name="repeatPassword" component="div" className='err'/>
                         </div>
+
+                        {errors.organization ? <div className='err'>{errors.organization}</div> : null}
+
                         <div>
                             <button type='button' onClick={()=>setCurPage(2)}>Wstecz</button>
                             <button type='button' onClick={()=> {
                                 if(values.organization.city !== 'Wybierz' && values.organization.group) {
                                     setCurPage(4);
-                                }
-                            }}>Dalej</button>
+                                 } else { 
+                                    validateForm();
+                            }}}>Dalej</button>
                         </div>
                     </div>
                 </section>
@@ -261,25 +274,21 @@ export const FormMain = () => {
                                     <label>
                                         Ulica
                                         <Field name='address.street'/>
-                                        <ErrorMessage name="address.street" component="div" className='err'/>
                                     </label>
 
                                     <label>
                                         Miasto
                                         <Field name='address.city'/>
-                                        <ErrorMessage name="address.city" component="div" className='err'/>
                                     </label>
 
                                     <label>
                                         Kod<br/>pocztowy
                                         <Field name='address.postCode' />
-                                        <ErrorMessage name="address.postCode" component="div" className='err'/>
                                     </label>
 
                                     <label>
                                         Numer<br/>telefonu
                                         <Field name='address.phone'/>
-                                        <ErrorMessage name="address.phone" component="div" className='err'/>
                                     </label>
                                 </div>
 
@@ -288,32 +297,32 @@ export const FormMain = () => {
                                     <label>
                                         Data
                                         <Field name='term.date'/>
-                                        <ErrorMessage name="term.date" component="div" className='err'/>
                                     </label>
 
                                     <label>
                                         Godzina
                                         <Field name='term.time'/>
-                                        <ErrorMessage name="term.time" component="div" className='err'/>
                                     </label>
 
                                     <label className='comments--label'>
                                         Uwagi<br/>dla kuriera
                                         <Field name='term.comments' as='textarea'/>
-                                        <ErrorMessage name="term.comments" component="div" className='err'/>
                                     </label>
                                 </div>
                             </div>
                         </div>
+
+                        {errors.term ? <div className='err'>{errors.term}</div> : null}
 
                         <div>
                             <button type='button' onClick={()=>setCurPage(3)}>Wstecz</button>
                             <button type='button' onClick={()=> {
                                 if(values.address.street && values.address.city && values.address.postCode 
                                     && values.address.phone && values.term.date && values.term.time) {
-                                        setCurPage(5)
-                                    }
-                                }}>Dalej</button>
+                                    setCurPage(5);
+                                 } else { 
+                                    validateForm();
+                            }}}>Dalej</button>
                         </div>
                     </div>
                 </section>
@@ -419,37 +428,75 @@ export const FormMain = () => {
 
             validate={values => {
                 const errors = {};
-            
-                if (!values.category) {
-                    errors.category = 'Musisz coś wybrać aby przejść dalej!';
+
+                switch(curPage) {
+                    case 1:
+                        if(!values.category) {
+                            errors.category = 'Musisz coś wybrać aby przejść dalej!'
+                        }
+                        break;
+                    case 2:
+                        if(values.numberOfBags === 'Wybierz') {
+                            errors.numberOfBags = 'Musisz wybrać liczbę worków aby przejść dalej!'
+                        }
+                        break;
+                    case 3:
+                        if(values.organization.city === 'Wybierz' || !values.organization.group) {
+                            errors.organization = 'Wybierz komu chcesz pomóc oraz w jakiej lokalizacji!'
+                        }
+                        break;
+                    case 4:
+                        if(!values.address.street || !values.address.city || !values.address.postCode 
+                            || !values.address.phone || !values.term.date || !values.term.time) {
+                                errors.term = 'Musisz wypełnić wszystkie pola';
+                        }
+                        break;
+                    default:
+                        if(!values.category) {
+                            errors.category = 'Musisz coś wybrać aby przejść dalej!'
+                        }
+
+                        if(values.numberOfBags === 'Wybierz') {
+                            errors.numberOfBags = 'Musisz wybrać liczbę worków aby przejść dalej!'
+                        }
+
+                        if(values.organization.city === 'Wybierz' || !values.organization.group) {
+                            errors.organization = 'Wybierz komu chcesz pomóc oraz w jakiej lokalizacji!'
+                        }
+
+                        if(!values.address.street || !values.address.city || !values.address.postCode 
+                            || !values.address.phone || !values.term.date || !values.term.time) {
+                                errors.term = 'Musisz wypełnić wszystkie pola';
+                        }
+                        break;
                 }
 
 
-                if (!values.numberOfBags) {
-                    errors.numberOfBags = 'Musisz wybrać liczbę worków aby przejść dalej!'
-                }
+                // if (values.numberOfBags === 'Wybierz') {
+                //     errors.numberOfBags = 'Musisz wybrać liczbę worków aby przejść dalej!'
+                // }
 
 
-                if (!values.address.street) {
-                    errors.address.street = 'Pole obowiązkowe!'
-                }
-                if (!values.address.city) {
-                    errors.address.city = 'Pole obowiązkowe!'
-                }
-                if (!values.address.postCode) {
-                    errors.address.postCode = 'Pole obowiązkowe!'
-                }
-                if (!values.address.phone) {
-                    errors.address.phone = 'Pole obowiązkowe!'
-                }
+                // if (!values.address.street) {
+                //     errors.address.street = 'Pole obowiązkowe!'
+                // }
+                // if (!values.address.city) {
+                //     errors.address.city = 'Pole obowiązkowe!'
+                // }
+                // if (!values.address.postCode) {
+                //     errors.address.postCode = 'Pole obowiązkowe!'
+                // }
+                // if (!values.address.phone) {
+                //     errors.address.phone = 'Pole obowiązkowe!'
+                // }
 
 
-                if (!values.term.date) {
-                    errors.term.date = 'Pole obowiązkowe!'
-                }
-                if (!values.term.time) {
-                    errors.term.time = 'Pole obowiązkowe!'
-                }
+                // if (!values.term.date) {
+                //     errors.term.date = 'Pole obowiązkowe!'
+                // }
+                // if (!values.term.time) {
+                //     errors.term.time = 'Pole obowiązkowe!'
+                // }
             
                 return errors;
             }}
@@ -458,9 +505,9 @@ export const FormMain = () => {
                 console.log(values)
             }}
         >
-            {({errors, touched, values}) => (
+            {({errors, values, validateForm}) => (
                 <Form>
-                    {pagination(errors, touched, values)}
+                    {pagination(errors, values, validateForm)}
                 </Form>
             )}
         </Formik>
