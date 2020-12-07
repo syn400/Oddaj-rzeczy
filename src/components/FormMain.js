@@ -5,15 +5,19 @@ import arrowUp from '../assets/Icon-Arrow-Up.svg';
 import tshirt from '../assets/Icon-1.svg';
 import arrowCircle from '../assets/Icon-4.svg';
 
+import React from 'react';
+import InputMask from 'react-input-mask';
 
 import { Formik, Form, Field } from 'formik';
 import '../scss/FormMain.scss';
 import { Link } from 'react-router-dom';
 
 export const FormMain = () => {
-    const [curPage, setCurPage] = useState(1);
+    const [curPage, setCurPage] = useState(4);
     const [selectVisible, setSelectVisible] = useState(false);
     const [cityVisible, setCityVisible] = useState(false);
+
+    const [multipleValidation, setMultipleValidation] = useState(null);
 
     const wordVariety = (counter) => {
         if(counter === '1') {
@@ -25,7 +29,7 @@ export const FormMain = () => {
         }
     }
 
-    const pagination = (errors, values, validateForm) => {
+    const pagination = (errors, values, validateForm, setFieldValue, touched) => {
           
         if(curPage === 1) {
             return (
@@ -170,31 +174,31 @@ export const FormMain = () => {
                             
                             <div className="form--content page--2 page--3">
                                 <div>
-                                    <button type='button' onClick={()=>setCityVisible(!cityVisible)}>{values.organization.city} <img src={cityVisible ? arrowUp : arrowDown}alt=''/></button>
+                                    <button type='button' onClick={()=>setCityVisible(!cityVisible)}>{values.orgCity} <img src={cityVisible ? arrowUp : arrowDown}alt=''/></button>
 
                                     <div className='dropdown--select' style={{display: cityVisible ? 'block' : 'none'}}>
                                         <label onClick={()=>setCityVisible(false)}>
-                                            <Field type='radio' name='organization.city' value='Poznań' />
+                                            <Field type='radio' name='orgCity' value='Poznań' />
                                             <span>Poznań</span>
                                         </label>
 
                                         <label onClick={()=>setCityVisible(false)}>
-                                            <Field type='radio' name='organization.city' value='Warszawa' />
+                                            <Field type='radio' name='orgCity' value='Warszawa' />
                                             <span>Warszawa</span>
                                         </label>
 
                                         <label onClick={()=>setCityVisible(false)}>
-                                            <Field type='radio' name='organization.city' value='Kraków' />
+                                            <Field type='radio' name='orgCity' value='Kraków' />
                                             <span>Kraków</span>
                                         </label>
 
                                         <label onClick={()=>setCityVisible(false)}>
-                                            <Field type='radio' name='organization.city' value='Wrocław' />
+                                            <Field type='radio' name='orgCity' value='Wrocław' />
                                             <span>Wrocław</span>
                                         </label>
 
                                         <label onClick={()=>setCityVisible(false)}>
-                                            <Field type='radio' name='organization.city' value='Katowice' />
+                                            <Field type='radio' name='orgCity' value='Katowice' />
                                             <span>Katowice</span>
                                         </label>
                                      </div>
@@ -205,27 +209,27 @@ export const FormMain = () => {
 
                                     <div>
                                         <label>
-                                            <Field type="radio" name="organization.group" value='dzieciom' />
+                                            <Field type="radio" name="orgGroup" value='dzieciom' />
                                             <span>dzieciom</span>
                                         </label>
 
                                         <label>
-                                            <Field type="radio" name="organization.group" value='samotnym matkom' />
+                                            <Field type="radio" name="orgGroup" value='samotnym matkom' />
                                             <span>samotnym matkom</span>
                                         </label>
 
                                         <label>
-                                            <Field type="radio" name="organization.group" value='bezdomnym' />
+                                            <Field type="radio" name="orgGroup" value='bezdomnym' />
                                             <span>bazdomnym</span>
                                         </label>
 
                                         <label>
-                                            <Field type="radio" name="organization.group" value='niepełnosprawnym' />
+                                            <Field type="radio" name="orgGroup" value='niepełnosprawnym' />
                                             <span>niepełnosprawnym</span>
                                         </label>
 
                                         <label>
-                                            <Field type="radio" name="organization.group" value='osobom starszym' />
+                                            <Field type="radio" name="orgGroup" value='osobom starszym' />
                                             <span>osobom starszym</span>
                                         </label>
                                     </div>
@@ -234,20 +238,21 @@ export const FormMain = () => {
 
                                 <div className='organization'>
                                     <h2>Wpisz nazwę konkretnej organizacji (opcjonalnie)</h2>
-                                    <Field name='organization.organizationName'/>
+                                    <Field name='orgName'/>
                                 </div>
                             </div>
                         </div>
 
-                        {errors.organization ? <div className='err'>{errors.organization}</div> : null}
+                        {!null && (!values.orgGroup || values.orgCity === 'Wybierz') ? <div className='err'>{multipleValidation}</div> : null}
 
                         <div>
                             <button type='button' onClick={()=>setCurPage(2)}>Wstecz</button>
                             <button type='button' onClick={()=> {
-                                if(values.organization.city !== 'Wybierz' && values.organization.group) {
+                                if(values.orgCity !== 'Wybierz' && values.orgGroup) {
+                                    setMultipleValidation(null);
                                     setCurPage(4);
                                  } else { 
-                                    validateForm();
+                                    setMultipleValidation('Wybierz lokalizację oraz komu chcesz pomóc!')
                             }}}>Dalej</button>
                         </div>
                     </div>
@@ -273,22 +278,26 @@ export const FormMain = () => {
 
                                     <label>
                                         Ulica
-                                        <Field name='address.street'/>
+                                        <Field name='street' />
                                     </label>
 
                                     <label>
                                         Miasto
-                                        <Field name='address.city'/>
+                                        <Field name='city' />
                                     </label>
 
                                     <label>
                                         Kod<br/>pocztowy
-                                        <Field name='address.postCode' />
+                                        <Field name='postCode' render={()=>{
+                                            return <InputMask name='postCode' mask='99-999' value={values.postCode} onChange={e => setFieldValue('postCode', e.target.value)} />
+                                        }} />
                                     </label>
 
                                     <label>
                                         Numer<br/>telefonu
-                                        <Field name='address.phone'/>
+                                        <Field name='phone' render={()=>{
+                                            return <InputMask name='phone' mask='999 999 999' value={values.phone} onChange={e => setFieldValue('phone', e.target.value)} />
+                                        }} />
                                     </label>
                                 </div>
 
@@ -296,32 +305,37 @@ export const FormMain = () => {
                                     <h2>Termin odbioru:</h2>
                                     <label>
                                         Data
-                                        <Field name='term.date'/>
+                                        <Field name='date' render={()=>{
+                                            return <InputMask name='date' mask="99/99/2099" value={values.date} onChange={e => setFieldValue('date', e.target.value)} />
+                                        }} />
                                     </label>
 
                                     <label>
                                         Godzina
-                                        <Field name='term.time'/>
+                                        <Field name='time' render={()=>{
+                                            return <InputMask name='time' mask="99:99" value={values.time} onChange={e => setFieldValue('time', e.target.value)} />
+                                        }} />
                                     </label>
 
                                     <label className='comments--label'>
                                         Uwagi<br/>dla kuriera
-                                        <Field name='term.comments' as='textarea'/>
+                                        <Field name='comments' as='textarea'/>
                                     </label>
                                 </div>
                             </div>
                         </div>
 
-                        {errors.term ? <div className='err'>{errors.term}</div> : null}
+                        {!null && (!values.street || !values.city || !values.postCode || !values.phone || !values.date || !values.time) 
+                            ? <div className='err'>{multipleValidation}</div> : null}
 
                         <div>
                             <button type='button' onClick={()=>setCurPage(3)}>Wstecz</button>
                             <button type='button' onClick={()=> {
-                                if(values.address.street && values.address.city && values.address.postCode 
-                                    && values.address.phone && values.term.date && values.term.time) {
+                                if(values.street && values.city && values.postCode 
+                                    && values.phone && values.date && values.time) {
                                     setCurPage(5);
                                  } else { 
-                                    validateForm();
+                                    setMultipleValidation('Musisz wypełnić wszystkie pola!');
                             }}}>Dalej</button>
                         </div>
                     </div>
@@ -342,12 +356,12 @@ export const FormMain = () => {
 
                                     <div>
                                         <img src={tshirt} alt=''/>
-                                        <p>{values.numberOfBags} {wordVariety(values.numberOfBags)}, {values.category}, {values.organization.group}</p>
+                                        <p>{values.numberOfBags} {wordVariety(values.numberOfBags)}, {values.category}, {values.orgGroup}</p>
                                     </div>
 
                                     <div>
                                         <img src={arrowCircle} alt=''/>
-                                        <p>dla lokalizacji: {values.organization.city}</p>
+                                        <p>dla lokalizacji: {values.orgCity}</p>
                                     </div>
                                 </div>
 
@@ -356,22 +370,22 @@ export const FormMain = () => {
 
                                     <span>
                                         Ulica
-                                        <p>{values.address.street}</p>
+                                        <p>{values.street}</p>
                                     </span>
 
                                     <span>
                                         Miasto
-                                        <p>{values.address.city}</p>
+                                        <p>{values.city}</p>
                                     </span>
 
                                     <span>
                                         Kod<br/>pocztowy
-                                        <p>{values.address.postCode}</p>
+                                        <p>{values.postCode}</p>
                                     </span>
 
                                     <span>
                                         Numer<br/>telefonu
-                                        <p>{values.address.phone}</p>
+                                        <p>{values.phone}</p>
                                     </span>
                                 </div>
 
@@ -379,17 +393,17 @@ export const FormMain = () => {
                                     <h2>Termin odbioru:</h2>
                                     <span>
                                         Data
-                                        <p>{values.term.date}</p>
+                                        <p>{values.date}</p>
                                     </span>
 
                                     <span>
                                         Godzina
-                                        <p>{values.term.time}</p>
+                                        <p>{values.time}</p>
                                     </span>
 
                                     <span className='comments--label'>
                                         Uwagi<br/>dla kuriera
-                                        <p>{values.term.comments}</p>
+                                        <p>{values.comments ? values.comments : 'brak'}</p>
                                     </span>
                                 </div>
                             </div>
@@ -421,9 +435,18 @@ export const FormMain = () => {
         initialValues={{
             category: '', 
             numberOfBags: 'Wybierz', 
-            organization: {city: 'Wybierz', group: '', organizationName: ''},
-            address: {street: '', city: '', postCode: '', phone: ''},
-            term: {date: '', time: '', comments: ''}
+
+            orgCity: 'Wybierz',
+            orgGroup: '',
+            orgName: '',
+
+            street: '',
+            city: '',
+            postCode: '',
+            phone: '',
+            date: '',
+            time: '',
+            comments: ''
         }}
 
             validate={values => {
@@ -441,63 +464,41 @@ export const FormMain = () => {
                         }
                         break;
                     case 3:
-                        if(values.organization.city === 'Wybierz' || !values.organization.group) {
-                            errors.organization = 'Wybierz komu chcesz pomóc oraz w jakiej lokalizacji!'
+                        if(values.orgCity === 'Wybierz') {
+                            errors.orgCity = 'Wybierz komu chcesz pomóc oraz w jakiej lokalizacji!'
+                        }
+
+                        if(!values.orgGroup) {
+                            errors.orgGroup = 'Wybierz komu chcesz pomóc oraz w jakiej lokalizacji!'
                         }
                         break;
                     case 4:
-                        if(!values.address.street || !values.address.city || !values.address.postCode 
-                            || !values.address.phone || !values.term.date || !values.term.time) {
-                                errors.term = 'Musisz wypełnić wszystkie pola';
+                        if(!values.street) {
+                            errors.street = 'Pole obowiązkowe!'
+                        }
+
+                        if(!values.city) {
+                            errors.city = 'Pole obowiązkowe!'
+                        }
+
+                        if(!values.postCode) {
+                            errors.postCode = 'Pole obowiązkowe!'
+                        }
+
+                        if(!values.phone) {
+                            errors.phone = 'Pole obowiązkowe!'
+                        }
+
+                        if(!values.date) {
+                            errors.date = 'Pole obowiązkowe!'
+                        }
+
+                        if(!values.time) {
+                            errors.time = 'Pole obowiązkowe!'
                         }
                         break;
                     default:
-                        if(!values.category) {
-                            errors.category = 'Musisz coś wybrać aby przejść dalej!'
-                        }
-
-                        if(values.numberOfBags === 'Wybierz') {
-                            errors.numberOfBags = 'Musisz wybrać liczbę worków aby przejść dalej!'
-                        }
-
-                        if(values.organization.city === 'Wybierz' || !values.organization.group) {
-                            errors.organization = 'Wybierz komu chcesz pomóc oraz w jakiej lokalizacji!'
-                        }
-
-                        if(!values.address.street || !values.address.city || !values.address.postCode 
-                            || !values.address.phone || !values.term.date || !values.term.time) {
-                                errors.term = 'Musisz wypełnić wszystkie pola';
-                        }
-                        break;
-                }
-
-
-                // if (values.numberOfBags === 'Wybierz') {
-                //     errors.numberOfBags = 'Musisz wybrać liczbę worków aby przejść dalej!'
-                // }
-
-
-                // if (!values.address.street) {
-                //     errors.address.street = 'Pole obowiązkowe!'
-                // }
-                // if (!values.address.city) {
-                //     errors.address.city = 'Pole obowiązkowe!'
-                // }
-                // if (!values.address.postCode) {
-                //     errors.address.postCode = 'Pole obowiązkowe!'
-                // }
-                // if (!values.address.phone) {
-                //     errors.address.phone = 'Pole obowiązkowe!'
-                // }
-
-
-                // if (!values.term.date) {
-                //     errors.term.date = 'Pole obowiązkowe!'
-                // }
-                // if (!values.term.time) {
-                //     errors.term.time = 'Pole obowiązkowe!'
-                // }
-            
+                    }
                 return errors;
             }}
 
@@ -505,9 +506,9 @@ export const FormMain = () => {
                 console.log(values)
             }}
         >
-            {({errors, values, validateForm}) => (
+            {({errors, values, validateForm, setFieldValue, touched}) => (
                 <Form>
-                    {pagination(errors, values, validateForm)}
+                    {pagination(errors, values, validateForm, setFieldValue, touched)}
                 </Form>
             )}
         </Formik>

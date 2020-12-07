@@ -298,7 +298,11 @@ section.form--container {
                         font-family: $font-base;
                         font-weight: 300;
                         color: $color-text;
-                        padding: 0 0.5rem
+                        padding: 0 0.5rem;
+
+                        &.err--border {
+                            border-color: #ca1616;
+                        }
                     }
 
                     .comments--label {
