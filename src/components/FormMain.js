@@ -13,7 +13,7 @@ import '../scss/FormMain.scss';
 import { Link } from 'react-router-dom';
 
 export const FormMain = () => {
-    const [curPage, setCurPage] = useState(4);
+    const [curPage, setCurPage] = useState(1);
     const [selectVisible, setSelectVisible] = useState(false);
     const [cityVisible, setCityVisible] = useState(false);
 
@@ -29,7 +29,7 @@ export const FormMain = () => {
         }
     }
 
-    const pagination = (errors, values, validateForm, setFieldValue, touched) => {
+    const pagination = (errors, values, validateForm, setFieldValue) => {
           
         if(curPage === 1) {
             return (
@@ -506,9 +506,9 @@ export const FormMain = () => {
                 console.log(values)
             }}
         >
-            {({errors, values, validateForm, setFieldValue, touched}) => (
+            {({errors, values, validateForm, setFieldValue}) => (
                 <Form>
-                    {pagination(errors, values, validateForm, setFieldValue, touched)}
+                    {pagination(errors, values, validateForm, setFieldValue)}
                 </Form>
             )}
         </Formik>
